@@ -35,4 +35,16 @@ g + geom_boxplot()
 #LotFrontage ####===============================================================================
 #Linear feet of street connected to property
 plot(train$LotFrontage,train$SalePrice)
+#maybe create ranges of lots such as from 0-25, 25-50, 50-75, etc?
+
+#LotArea ####===============================================================================
+#LotArea: Lot size in square feet
+plot(train$LotArea,train$SalePrice)
+#removing a lot of outlier it looks that it has a big strong linear relationship with sales price
+
+#Street ####===============================================================================
+#Street: Type of road access
+boxplot(SalePrice~Street,data=train,
+        main="Street vs Sale Price",xlab="Street",ylab="Sale Price",col="orange",border="brown")
+#it looks like pavement has a better price but certainly has way more variation and outliers
 
