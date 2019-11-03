@@ -85,4 +85,56 @@ g <- ggplot(data = train, aes(x = reorder(LandSlope, SalePrice), y = SalePrice))
 g + geom_boxplot()
 #Doesn't look like it provides a lot of information
 
+#Neighborhood ####===============================================================================
+#Neighborhood: Physical locations within Ames city limits
+g <- ggplot(data = train, aes(x = reorder(Neighborhood, SalePrice), y = SalePrice))
+g + geom_boxplot()
+#Gives a lot of information. Maybe group them if the anova tests suggests to
 
+#Condition1 ####===============================================================================
+#Condition1: Proximity to main road or railroad
+g <- ggplot(data = train, aes(x = reorder(Condition1, SalePrice), y = SalePrice))
+g + geom_boxplot()
+#Gives a little information. Maybe an interaction with Condition 2?
+
+#Condition2 ####===============================================================================
+#Condition2: Proximity to main road or railroad (if a second is present)
+g <- ggplot(data = train, aes(x = reorder(Condition2, SalePrice), y = SalePrice))
+g + geom_boxplot()
+#Gives a little information. Maybe an interaction with Condition 1?
+
+#OverallQual ####===============================================================================
+#OverallQual: Overall material and finish quality
+g <- ggplot(data = train, aes(x = reorder(OverallQual, SalePrice), y = SalePrice))
+g + geom_boxplot()
+#Gives a lot of infomration
+
+#OverallCond ####===============================================================================
+#OverallCond: Overall condition rating
+g <- ggplot(data = train, aes(x = reorder(OverallCond, SalePrice), y = SalePrice))
+g + geom_boxplot()
+#It is not ordered by mean so I guess this variable it is not that important
+
+#YearBuilt ####===============================================================================
+#YearBuilt: Original construction date
+plot(train$YearBuilt,train$SalePrice)
+#I think it gives a little bit of information but maybe make year groups? It looks like only new years are important.
+#Maybe classify them as old and new? Or just a True/False if it was built recently?
+
+#YearRemodAdd ####===============================================================================
+#YearRemodAdd: Remodel date
+plot(train$YearRemodAdd,train$SalePrice)
+#Same as YearBuilt. It looks like it gives some information but has better price if recently remodeled?
+
+#RoofStyle ####===============================================================================
+#RoofStyle: Type of roof
+g <- ggplot(data = train, aes(x = reorder(RoofStyle, SalePrice), y = SalePrice))
+g + geom_boxplot()
+#Maybe check if Gable and Hip are more expensive? It looks like they have more outliers in high prices side
+#Maybe something like the ones with more outliers in one and leave the other ones as dummy variables
+
+#RoofMatl ####===============================================================================
+#RoofMatl: Roof material
+g <- ggplot(data = train, aes(x = reorder(RoofMatl, SalePrice), y = SalePrice))
+g + geom_boxplot()
+# Check this interesting link: https://www.918construction.com/types-of-roof-shingles/
